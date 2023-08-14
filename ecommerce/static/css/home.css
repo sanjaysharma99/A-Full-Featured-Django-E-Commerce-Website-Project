@@ -1,0 +1,98 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: aliceblue;
+}
+#banner{
+    height: 400px;
+    background-image: url("http://localhost:8000/static/images/banner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 100px;
+    padding-left: 40px;
+}
+#banner_element{
+    width: 30%;
+}
+#banner_element h1{
+    font-size: 42px;
+}
+#banner_element a{
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 5px 20px;
+    font-size: 18px;
+}
+#popular_products_sep{
+    text-align: center;
+}
+#popular_product{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+#product_box{
+    width: 200px;
+    text-align: left;
+    background-color: white;
+    padding-left: 2%;
+}
+#product_box img{
+    margin-top: 5%;
+    width: 90%;
+    height: 220px;
+}
+#product_name a{
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+}
+#categories_sep{
+    text-align: center;
+}
+#categories{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+#category{
+    width: 200px;
+    height: 200px;
+    background-image: url("http://localhost:8000/static/images/banner.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#category a{
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    font-size: 22px;
+    padding: 5px 10px;
+}
+@media screen and (max-width:460px){
+    #banner_element{
+        width: 50%;
+    }
+    #product_box{
+        width: 70%;
+    }
+    #category{
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}

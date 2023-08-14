@@ -1,0 +1,33 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: aliceblue;
+}
+#product_heading{
+    text-align: center;
+}
+#popular_products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+#product_box{
+    width: 200px;
+    text-align: left;
+    background-color: white;
+    padding-left: 2%;
+}
+#product_box img{
+    margin-top: 5%;
+    width: 90%;
+    height: 220px;
+}
+#product_name a{
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+}

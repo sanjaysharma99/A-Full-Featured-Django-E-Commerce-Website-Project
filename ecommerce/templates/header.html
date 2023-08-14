@@ -1,0 +1,39 @@
+{% load static %}
+<header>
+    <img src="{% static 'images/sanjay.png' %}" alt="logo"/>
+    <div class="topnav" id="myTopnav">
+      <div>
+        <a href="/">Home</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+      </div>
+        <div class="dropdown">
+            <button class="dropbtn">Products
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              {% for category in categories %}
+                <a href="/category/{{ category.category_slug }}">{{ category.category_name }}</a>
+              {% endfor %}
+            </div>
+        </div>
+        <div class="dropdown">
+          {% if request.user.is_authenticated %}
+              <button class="dropbtn">{{ request.user.username }}
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="/cart/">Cart</a>
+                <a href="/logout/">Log Out</a>
+                <a href='/delete-account/'>Delete Account</a>
+              </div>
+          {% else %}
+              <button class="dropbtn">Account
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="/login/">Login</a>
+              </div>
+          {% endif %}
+        </div>
+    </div>
+</header>

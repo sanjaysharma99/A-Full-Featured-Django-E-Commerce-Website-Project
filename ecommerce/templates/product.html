@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Product</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <script src='{% static 'js/header.js' %}' defer></script>
+    <script src='{% static 'js/product.js' %}' defer></script>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div id="main">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div id="product_box">
+                <div id="product_image">
+                    <img src="/{{ data.product_image }}" alt="product image"/>
+                </div>
+                <div id="product_description">
+                    <p><span id="product_category">{{ data.product_category }}</span> <br/><br/>
+                        <input type="text" id="product_name" value="{{ data.product_name }}" name="product_name" readonly/><br/><br/>
+                        <span id="product_price">{{ data.product_pric }}rs</span><br/><br/>
+                        {{ data.product_description }}
+                    </p>
+                    <div id="btns">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="button" onclick="decreasevalue()" id="decrease" class="btn" value="-"/>
+                                    <input type="text" id="display" value="1" name="qty"/>
+                                    <input type="button" id="increase" class="btn" value="+" onclick="increasevalue()"/>
+                                </td>
+                                <td><input type="submit" id="add" class="btn" value="ADD TO CART"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

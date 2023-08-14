@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/category.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <script src='{% static 'js/header.js' %}' defer></script>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div id="product_heading">
+        <h1>Popular Products</h1>
+    </div
+
+    <!--popular cloth start-->
+    <div id="popular_products">
+      {% for product in category %}
+          <div id="product_box">
+              <img src="/{{ product.product_image }}" alt="cloth"/>
+              <p><span id="category_name">{{ product.product_category }}</span><br/>
+                <span id="product_name"><a href="/product/{{ product.product_slug }}">{{ product.product_name }}</a></span><br/>
+                <span id="price">{{ product.product_pric }}rs</span>
+              </p>
+          </div>
+      {% endfor %}  
+    </div>
+    <!--popular cloth end-->
+
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CART</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <script src='{% static 'js/header.js' %}' defer></script>
+    <script src='{% static 'js/cart.js' %}' defer></script>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <!--starting of categories-->
+    <div id="main">
+        {% for cart_data, main_data in mydict.items %}
+            <div id="product">
+                <img src="/{{ main_data.product_image }}" alt="product"/>
+                <p>
+                    <span id="product_name"><a href="/product/{{ main_data.product_slug }}">{{ cart_data.cart_product_name }}</a></span><br/>
+                    <span id="product_price">{{ main_data.product_pric }}rs</span><br/>
+                </p>
+                    <div id="btns">
+                        <table>
+                            <tr>
+                                <form action="/update-cart-product/" method="post">
+                                    {% csrf_token %}
+                                    <input type="text" name="update_cart_product" value="{{ cart_data.cart_product_name}}" hidden/>
+                                    <td>
+                                        <input type="button" onclick="decreasevalue('{{ cart_data.cart_product_name }}')" id="decrease" class="btn" value="-"/>
+                                        <input type="text" id="{{ cart_data.cart_product_name }}" class='display' value="{{ cart_data.cart_product_qty }}" name="qty"/>
+                                        <input type="button" id="increase" class="btn" value="+" onclick="increasevalue('{{ cart_data.cart_product_name }}')"/>
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Update" id="updatebtn" class="btn morebtn" />
+                                    </td>
+                                </form>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form action="/delete-cart-product/" method="post">
+                                        {% csrf_token %}
+                                        <input type="text" name="delete_cart_product" value="{{ cart_data.cart_product_name}}" hidden/>
+                                        <input type="submit" value="Delete" id="delete_btn" class="btn morebtn"/>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div id="checkout_box">
+        <a href="/checkout/">Checkout</a>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

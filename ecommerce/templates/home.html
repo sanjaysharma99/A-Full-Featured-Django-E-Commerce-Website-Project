@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-commerce Website</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+  <script src='{% static 'js/header.js' %}' defer></script>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <!--banner start-->
+    <div id="banner">
+      <div id="banner_element">
+        <h1>Slick. Modern. Awesome.</h1>
+        <a href="">Shop Now</a>
+      </div>
+    </div>
+    <!--banner end-->
+
+    <div id="popular_products_sep">
+      <h1>Popular Products</h1>
+    </div>
+
+    <!--popular cloth start-->
+    <div id="popular_product">
+      {% for product in products %}
+          <div id="product_box">
+              <img src="{{ product.product_image }}" alt="cloth"/>
+              <p><span id="category_name">{{ product.product_category }}</span><br/>
+                <span id="product_name"><a href="/product/{{ product.product_slug }}">{{ product.product_name }}</a></span><br/>
+                <span id="price">{{ product.product_pric }}rs</span>
+              </p>
+          </div>
+      {% endfor %}  
+  </div>
+  <!--popular cloth end-->
+
+  <div id="categories_sep">
+    <h1>Popular Categories</h1>
+  </div>
+
+  <!--starting of categories-->
+  <div id="categories">
+    {% for category in categories %}
+      <div id="category"  style="background-image: url({{ category.category_image }});">
+        <a href="/category/{{ category.category_slug }}">{{ category.category_name }}</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% include 'footer.html' %}
+</body>
+</html>

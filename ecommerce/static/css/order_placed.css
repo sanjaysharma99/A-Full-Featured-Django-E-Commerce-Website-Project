@@ -1,0 +1,23 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: aliceblue;
+}
+#main{
+    width: 300px;
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#sub_main{
+    width: 250px;
+    padding: 5px 10px 20px 10px;
+    text-align: center;
+    background-color: white;
+    border-radius: 4px;
+}
+#sub_main img{
+    width: 150px;
+}

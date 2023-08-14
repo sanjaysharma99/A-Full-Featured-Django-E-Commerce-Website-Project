@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <script src='{% static 'js/header.js' %}' defer></script>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div id="main">
+        <div id="sub_main">
+            <h2>Checkout</h2>
+
+        <form>
+            <input class="all_input" type="text" name="full_name" placeholder="Enter Your Full Name" required><br><br>
+            <input class="all_input" type="text" name="username_or_Email" placeholder="Enter Username or Email Id" required><br><br>
+            <input class="all_input" type="text" name="address" placeholder="Enter Your Address" required><br><br>
+            <input class="all_input" type="text" name="zip_code" placeholder="Enter Zip Code" required><br><br>
+            <input id="amount" type="text" name="total_amount" value="Total Amount: {{ total_price }}rs" readonly><br><br>
+            <input id="sb" type="submit" value="Place Order">
+        </form>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>
